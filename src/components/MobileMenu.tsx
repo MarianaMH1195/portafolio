@@ -39,7 +39,7 @@ const MobileMenu = ({
                 {/* Header del menú */}
                 <div className="flex items-center justify-between p-6 border-b border-white/10">
                     <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-                        Menu
+                        Menú
                     </span>
 
                     <button
