@@ -1,5 +1,4 @@
-
-
+import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
@@ -8,8 +7,15 @@ import Contact from './components/Contact';
 
 function App() {
   return (
-    <div className="min-h-screen">
-      <Hero />
+    <div className="relative min-h-screen overflow-x-hidden">
+      {/* Navbar flotante */}
+      <Navbar />
+
+      {/* Hero Section */}
+      <div id="home">
+        <Hero />
+      </div>
+
       <main className="space-y-0">
         <Projects />
 
@@ -19,6 +25,7 @@ function App() {
           <About />
         </section>
       </main>
+
       <Contact />
     </div>
   );
