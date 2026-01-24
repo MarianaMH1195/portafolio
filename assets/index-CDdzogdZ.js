@@ -17,7 +17,7 @@ Error generating stack: `+e.message+`
           shadow-2xl shadow-cyan-500/20
           transition-transform duration-300 ease-in-out
           ${E?"translate-x-0":"translate-x-full"}
-        `,children:[g.jsxs("div",{className:"flex items-center justify-between p-6 border-b border-white/10",children:[g.jsx("span",{className:"text-xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent",children:"Menu"}),g.jsx("button",{onClick:w,className:`\r
+        `,children:[g.jsxs("div",{className:"flex items-center justify-between p-6 border-b border-white/10",children:[g.jsx("span",{className:"text-xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent",children:"Menú"}),g.jsx("button",{onClick:w,className:`\r
               p-2 rounded-lg\r
               bg-white/10 hover:bg-white/20\r
               border border-white/20 hover:border-cyan-400/50\r
@@ -31,7 +31,7 @@ Error generating stack: `+e.message+`
                 rounded-xl\r
                 transition-all duration-300\r
                 group\r
-              `,style:{animationDelay:`${L*100}ms`},children:g.jsxs("span",{className:"flex items-center justify-between",children:[C.label,g.jsx("svg",{className:"w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300",fill:"none",viewBox:"0 0 24 24",stroke:"currentColor",children:g.jsx("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:2,d:"M9 5l7 7-7 7"})})]})},C.id))}),g.jsx("div",{className:"absolute bottom-0 left-0 right-0 p-6 border-t border-white/10",children:g.jsx("p",{className:"text-slate-400 text-sm text-center",children:"Mariana Moreno © 2025"})})]})]}),ny=()=>{const[E,w]=Gn.useState(!1),[q,v]=Gn.useState(!1);Gn.useEffect(()=>{const P=()=>{w(window.scrollY>50)};return window.addEventListener("scroll",P),()=>window.removeEventListener("scroll",P)},[]);const C=P=>{document.getElementById(P)?.scrollIntoView({behavior:"smooth"}),v(!1)},L=[{label:"Projects",id:"projects"},{label:"Contact",id:"contact"}];return g.jsxs(g.Fragment,{children:[g.jsx("nav",{className:`
+              `,style:{animationDelay:`${L*100}ms`},children:g.jsxs("span",{className:"flex items-center justify-between",children:[C.label,g.jsx("svg",{className:"w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300",fill:"none",viewBox:"0 0 24 24",stroke:"currentColor",children:g.jsx("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:2,d:"M9 5l7 7-7 7"})})]})},C.id))}),g.jsx("div",{className:"absolute bottom-0 left-0 right-0 p-6 border-t border-white/10",children:g.jsx("p",{className:"text-slate-400 text-sm text-center",children:"Mariana Moreno © 2025"})})]})]}),ny=()=>{const[E,w]=Gn.useState(!1),[q,v]=Gn.useState(!1);Gn.useEffect(()=>{const P=()=>{w(window.scrollY>50)};return window.addEventListener("scroll",P),()=>window.removeEventListener("scroll",P)},[]);const C=P=>{document.getElementById(P)?.scrollIntoView({behavior:"smooth"}),v(!1)},L=[{label:"Proyectos",id:"projects"},{label:"Contacto",id:"contact"}];return g.jsxs(g.Fragment,{children:[g.jsx("nav",{className:`
           fixed top-6 left-1/2 -translate-x-1/2 z-50
           transition-all duration-300 ease-in-out
           ${E?"top-4 scale-95":"top-6 scale-100"}
