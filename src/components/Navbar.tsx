@@ -24,8 +24,8 @@ const Navbar = () => {
 
     // Links de navegación
     const navLinks = [
-        { label: 'Proyectos', id: 'projects' },
-        { label: 'Contacto', id: 'contact' },
+        { label: 'Proyectos', id: 'projectos' },
+        { label: 'Contacto', id: 'contacto' },
     ];
 
     return (
