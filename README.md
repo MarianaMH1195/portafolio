@@ -1,71 +1,71 @@
-# 🌌 Mariana Moreno - Portfolio
+# 🌌 Mariana Moreno - Portafolio
 
-A professional portfolio website built with **React + TypeScript + Tailwind CSS**, featuring a dark space-ocean aesthetic with glassmorphism effects.
+Portafolio web profesional construido con **React + TypeScript + Tailwind CSS**, con una estética espacial-oceánica oscura y efectos de glassmorphism.
 
-![Portfolio Preview](https://img.shields.io/badge/Status-In%20Development-cyan?style=for-the-badge)
+![Estado del Proyecto](https://img.shields.io/badge/Estado-En%20Desarrollo-cyan?style=for-the-badge)
 ![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4-06B6D4?style=for-the-badge&logo=tailwindcss)
 
 ---
 
-## ✨ Features
+## ✨ Características
 
-### 🎨 Visual Design
-- **Theme**: Dark + Cute + Space + Sea duality
-- **Glassmorphism**: Frosted glass effects with `backdrop-blur`
-- **Gradients**: Cyan → Blue → Purple color transitions
-- **Glow Effects**: Subtle glows on hover states
-- **Space-Ocean Background**: Immersive cosmic-oceanic imagery
+### 🎨 Diseño Visual
+- **Temática**: Dark + Cute + Space + Sea (dualidad espacio-océano)
+- **Glassmorphism**: Efectos de cristal esmerilado con `backdrop-blur`
+- **Gradientes**: Transiciones de color Cyan → Blue → Purple
+- **Efectos Glow**: Brillos sutiles en estados hover
+- **Fondo Espacio-Océano**: Imagen cósmica-oceánica inmersiva
 
-### 🧩 Components
+### 🧩 Componentes
 
-| Component | Description |
-|-----------|-------------|
-| `Navbar` | Floating glassmorphism navbar with gradient "M" logo, scroll-responsive sizing |
-| `MobileMenu` | Slide-in mobile menu with overlay and animated links |
-| `Hero` | Full-screen hero with gradient name, tagline, and CTA buttons |
-| `Projects` | Responsive grid of project cards with glassmorphism styling |
-| `Skills` | Skills section with visual representation |
-| `About` | About me section |
-| `Contact` | Contact section with social links |
-| `ButtonPrimary` | Gradient button with glow effect |
-| `ButtonSecondary` | Glassmorphism button with subtle hover |
+| Componente | Descripción |
+|------------|-------------|
+| `Navbar` | Barra de navegación flotante con glassmorphism, logo "M" con gradiente, tamaño responsivo al scroll |
+| `MobileMenu` | Menú móvil deslizable con overlay y enlaces animados |
+| `Hero` | Sección hero de pantalla completa con nombre en gradiente, tagline y botones CTA |
+| `Projects` | Grid responsivo de tarjetas de proyectos con estilo glassmorphism |
+| `Skills` | Sección de habilidades con representación visual |
+| `About` | Sección sobre mí |
+| `Contact` | Sección de contacto con enlaces sociales |
+| `ButtonPrimary` | Botón con gradiente y efecto glow |
+| `ButtonSecondary` | Botón glassmorphism con hover sutil |
 
-### 🎭 Interactions
-- Smooth scroll navigation between sections
-- Navbar shrinks on scroll (`scale-95`)
-- Animated hamburger menu (transforms to X)
-- Hover effects with 300ms transitions
-- Underline animations on nav links
+### 🎭 Interacciones
+- Navegación suave (smooth scroll) entre secciones
+- Navbar se reduce al hacer scroll (`scale-95`)
+- Menú hamburguesa animado (se transforma en X)
+- Efectos hover con transiciones de 300ms
+- Animaciones de subrayado en enlaces de navegación
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Comenzar
 
-### Prerequisites
+### Requisitos Previos
 - Node.js 18+
-- npm or yarn
+- npm o yarn
 
-### Installation
+### Instalación
 
 ```bash
-# Clone the repository
+# Clonar el repositorio
 git clone https://github.com/MarianaMH1195/portafolio.git
 
-# Navigate to project directory
+# Navegar al directorio del proyecto
 cd portafolio
 
-# Install dependencies
+# Instalar dependencias
 npm install
 
-# Start development server
+# Iniciar servidor de desarrollo
 npm run dev
 ```
 
-The app will be available at `http://localhost:5173`
+La aplicación estará disponible en `http://localhost:5173`
 
-### Build for Production
+### Compilar para Producción
 
 ```bash
 npm run build
@@ -73,15 +73,15 @@ npm run build
 
 ---
 
-## 📁 Project Structure
+## 📁 Estructura del Proyecto
 
 ```
 portafolio/
-├── public/                    # Static assets
+├── public/                    # Recursos estáticos
 ├── src/
 │   ├── assets/
 │   │   └── img/
-│   │       └── fondo.png      # Space-ocean background
+│   │       └── fondo.png      # Fondo espacio-océano
 │   ├── components/
 │   │   ├── About.tsx
 │   │   ├── ButtonPrimary.tsx
@@ -105,21 +105,21 @@ portafolio/
 
 ---
 
-## 🎨 Color Palette
+## 🎨 Paleta de Colores
 
-| Purpose | Color | Tailwind Class |
-|---------|-------|----------------|
-| Background | Dark Slate | `bg-slate-950` |
-| Section Alt | Slate | `bg-slate-900` |
-| Glass | White 5% | `bg-white/5` |
-| Primary Accent | Cyan | `text-cyan-400` |
-| Secondary Accent | Blue | `text-blue-600` |
-| Tertiary Accent | Purple | `text-purple-400` |
-| Text Primary | White | `text-white` |
-| Text Secondary | Slate 200 | `text-slate-200` |
-| Text Muted | Slate 400 | `text-slate-400` |
+| Propósito | Color | Clase Tailwind |
+|-----------|-------|----------------|
+| Fondo | Slate Oscuro | `bg-slate-950` |
+| Sección Alt | Slate | `bg-slate-900` |
+| Glassmorphism | Blanco 5% | `bg-white/5` |
+| Acento Primario | Cyan | `text-cyan-400` |
+| Acento Secundario | Azul | `text-blue-600` |
+| Acento Terciario | Púrpura | `text-purple-400` |
+| Texto Primario | Blanco | `text-white` |
+| Texto Secundario | Slate 200 | `text-slate-200` |
+| Texto Atenuado | Slate 400 | `text-slate-400` |
 
-### Custom Colors (tailwind.config.cjs)
+### Colores Personalizados (tailwind.config.cjs)
 - `cosmic-night`: #0B0F1A
 - `nebula-violet`: #3B1E4F
 - `deep-ocean`: #0E3A4A
@@ -130,38 +130,38 @@ portafolio/
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Stack Tecnológico
 
 - **Framework**: [React 18](https://react.dev/)
-- **Language**: [TypeScript 5](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
-- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Lenguaje**: [TypeScript 5](https://www.typescriptlang.org/)
+- **Estilos**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **Herramienta de Build**: [Vite](https://vitejs.dev/)
 - **Linting**: ESLint
 
 ---
 
-## 📱 Responsive Design
+## 📱 Diseño Responsivo
 
-- **Mobile**: Single column layout, hamburger menu
-- **Tablet**: 2-column project grid
-- **Desktop**: 3-column project grid, full navbar
-
----
-
-## 🔮 Future Enhancements
-
-- [ ] Scroll reveal animations
-- [ ] Parallax effects on hero
-- [ ] Cursor glow effect
-- [ ] Floating particles
-- [ ] Blog section
-- [ ] Project filters
-- [ ] Dark/Light mode toggle
-- [ ] CMS integration
+- **Móvil**: Layout de una columna, menú hamburguesa
+- **Tablet**: Grid de proyectos de 2 columnas
+- **Desktop**: Grid de proyectos de 3 columnas, navbar completa
 
 ---
 
-## 👩‍💻 Author
+## 🔮 Mejoras Futuras
+
+- [ ] Animaciones de scroll reveal
+- [ ] Efectos parallax en hero
+- [ ] Efecto de cursor con glow
+- [ ] Partículas flotantes
+- [ ] Sección de blog
+- [ ] Filtros de proyectos
+- [ ] Toggle modo oscuro/claro
+- [ ] Integración con CMS
+
+---
+
+## 👩‍💻 Autora
 
 **Mariana Moreno Henao**
 
@@ -170,12 +170,12 @@ portafolio/
 
 ---
 
-## 📄 License
+## 📄 Licencia
 
-This project is open source and available under the [MIT License](LICENSE).
+Este proyecto es de código abierto y está disponible bajo la [Licencia MIT](LICENSE).
 
 ---
 
 <p align="center">
-  <i>Designed with Duality & Code ✨</i>
+  <i>Diseñado con Dualidad & Código ✨</i>
 </p>
