@@ -70,7 +70,7 @@ const projects: Project[] = [
 
 const Projects: React.FC = () => {
     return (
-        <section className="relative px-6 lg:px-20 py-20 bg-gradient-to-b from-slate-950/90 to-slate-900">
+        <section id="projects" className="relative px-6 lg:px-20 py-20 bg-gradient-to-b from-slate-950/90 to-slate-900">
             <div className="max-w-7xl mx-auto">
                 {/* Header de Sección */}
                 <div className="mb-12">

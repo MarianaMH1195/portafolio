@@ -2,7 +2,7 @@ import React from 'react';
 
 const Contact: React.FC = () => {
     return (
-        <footer className="container mx-auto px-6 md:px-12 py-32 relative">
+        <footer id="contact" className="container mx-auto px-6 md:px-12 py-32 relative">
             <div className="border-t border-sea-foam/10 absolute top-0 left-6 right-6 md:left-12 md:right-12"></div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
