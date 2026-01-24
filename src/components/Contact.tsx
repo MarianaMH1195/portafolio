@@ -25,7 +25,7 @@ const Contact = () => {
                     </h3>
 
                     <a href="https://github.com/MarianaMH1195" target="_blank" rel="noopener noreferrer"
-                        className="group flex items-center justify-between p-8 bg-cosmic-night border border-sea-foam/20 hover:bg-sea-foam hover:text-cosmic-night transition-all duration-300">
+                        className="group flex items-center justify-between p-8 bg-cosmic-night border border-sea-foam/20 text-cyan-300/90 hover:bg-sea-foam hover:text-cosmic-night transition-all duration-300">
                         <div>
                             <span className="block text-sm font-bold opacity-60 uppercase tracking-widest mb-1">Código</span>
                             <span className="text-2xl font-bold">GitHub Profile</span>
@@ -34,7 +34,7 @@ const Contact = () => {
                     </a>
 
                     <a href="https://www.linkedin.com/in/mariana-moreno-henao/" target="_blank" rel="noopener noreferrer"
-                        className="group flex items-center justify-between p-8 bg-cosmic-night border border-sea-foam/20 hover:bg-star-pink hover:text-cosmic-night transition-all duration-300">
+                        className="group flex items-center justify-between p-8 bg-cosmic-night border border-sea-foam/20 text-cyan-300/90 hover:bg-star-pink hover:text-cosmic-night transition-all duration-300">
                         <div>
                             <span className="block text-sm font-bold opacity-60 uppercase tracking-widest mb-1">Carrera</span>
                             <span className="text-2xl font-bold">LinkedIn Profile</span>
@@ -43,7 +43,7 @@ const Contact = () => {
                     </a>
 
                     <a href="mailto:morenomariana03@gmail.com"
-                        className="group flex items-center justify-between p-8 bg-cosmic-night border border-sea-foam/20 hover:bg-sunset-gold hover:text-cosmic-night transition-all duration-300">
+                        className="group flex items-center justify-between p-8 bg-cosmic-night border border-sea-foam/20 text-cyan-300/90 hover:bg-sunset-gold hover:text-cosmic-night transition-all duration-300">
                         <div>
                             <span className="block text-sm font-bold opacity-60 uppercase tracking-widest mb-1">Email</span>
                             <span className="text-2xl font-bold">morenomariana03@gmail.com</span>
@@ -52,7 +52,7 @@ const Contact = () => {
                     </a>
 
                     <a href="/cv.pdf" download
-                        className="group flex items-center justify-between p-8 bg-cosmic-night border border-sea-foam/20 hover:bg-text-secondary hover:text-cosmic-night transition-all duration-300">
+                        className="group flex items-center justify-between p-8 bg-cosmic-night border border-sea-foam/20 text-cyan-300/90 hover:bg-text-secondary hover:text-cosmic-night transition-all duration-300">
                         <div>
                             <span className="block text-sm font-bold opacity-60 uppercase tracking-widest mb-1">Resumen</span>
                             <span className="text-2xl font-bold">Descargar CV</span>
