@@ -5,7 +5,10 @@ Portafolio web profesional construido con **React + TypeScript + Tailwind CSS**,
 ## 🎥 Demo
 
 <div align="center">
-  <video src="https://github.com/MarianaMH1195/portafolio/raw/main/src/assets/img/Demo.mp4" controls autoplay loop muted playsinline width="100%"></video>
+  <video width="100%" autoplay loop muted playsinline controls>
+    <source src="./src/assets/img/Demo.mp4" type="video/mp4" />
+    Tu navegador no soporta el formato de video.
+  </video>
 </div>
 
 ![Estado del Proyecto](https://img.shields.io/badge/Estado-En%20Desarrollo-d946ef?style=for-the-badge)
