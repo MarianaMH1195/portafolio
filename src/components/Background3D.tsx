@@ -3,15 +3,14 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial, Stars, Cloud } from '@react-three/drei';
 import { Group } from 'three';
 
-// Galaxy/Particle Field
+// Galaxy/Particle Field - Ajustado a tonos rosados/violetas
 const ParticleField = (props: React.ComponentProps<'group'>) => {
     const ref = useRef<Group>(null);
 
-    // Generamos 6000 partículas para el campo estelar principal
     const sphere = useMemo(() => {
-        const temp = new Float32Array(6000 * 3);
-        const count = 6000;
-        const radius = 2.5;
+        const temp = new Float32Array(5000 * 3);
+        const count = 5000;
+        const radius = 3;
         for (let i = 0; i < count; i++) {
             const u = Math.random();
             const v = Math.random();
@@ -30,8 +29,8 @@ const ParticleField = (props: React.ComponentProps<'group'>) => {
 
     useFrame((_state, delta) => {
         if (ref.current) {
-            ref.current.rotation.x -= delta / 20;
-            ref.current.rotation.y -= delta / 25;
+            ref.current.rotation.x -= delta / 30; // Más lento y majestuoso
+            ref.current.rotation.y -= delta / 40;
         }
     });
 
@@ -40,7 +39,7 @@ const ParticleField = (props: React.ComponentProps<'group'>) => {
             <Points positions={sphere} stride={3} frustumCulled={false}>
                 <PointMaterial
                     transparent
-                    color="#67e8f9" // Cyan-300
+                    color="#e879f9" // Fuchsia-400 (Brillo estelar rosado)
                     size={0.002}
                     sizeAttenuation={true}
                     depthWrite={false}
@@ -53,29 +52,34 @@ const ParticleField = (props: React.ComponentProps<'group'>) => {
 
 const Background3D = () => {
     return (
-        <div className="fixed inset-0 -z-10 bg-slate-950">
-            {/* Gradient overlay para simular profundidad cósmica */}
-            <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-[#0B0F1A] to-slate-950 z-0 pointer-events-none" />
+        <div className="fixed inset-0 -z-10 bg-[#0B0F1A]">
+            {/* Gradient background base - Deep space */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#020617] via-[#1e1b4b] to-[#0f172a] opacity-90 z-0 pointer-events-none" />
 
             <Canvas camera={{ position: [0, 0, 1] }}>
-                {/* Iluminación básica */}
-                <ambientLight intensity={0.4} />
-                <pointLight position={[10, 10, 10]} intensity={0.5} color="#c084fc" />
+                <ambientLight intensity={0.2} />
 
-                {/* Campo de estrellas fondo lejano */}
-                <Stars radius={150} depth={50} count={7000} factor={4} saturation={1} fade speed={0.5} />
+                {/* Estrellas brillantes y densas */}
+                <Stars radius={100} depth={50} count={8000} factor={4} saturation={1} fade speed={1} />
 
-                {/* Nebulosas Volumétricas (Clouds) */}
-                {/* Capa Profunda - Morado oscuro */}
-                <Cloud opacity={0.2} speed={0.1} width={20} depth={2} segments={20} position={[0, 0, -10]} color="#3b0764" />
+                {/* --- NEBULOSA VOLUMÉTRICA --- */}
+                {/* La idea es crear capas superpuestas de nubes con colores complementarios */}
 
-                {/* Capa Media - Azul/Cyan */}
-                <Cloud opacity={0.2} speed={0.15} width={15} depth={1.5} segments={15} position={[5, -2, -8]} color="#1e3a8a" />
+                {/* 1. Fondo Oscuro / Estructura (Dark Purple/Blue) */}
+                <Cloud seed={1} scale={2} volume={5} color="#1e1b4b" fade={10} opacity={0.3} position={[0, 0, -10]} speed={0.1} />
 
-                {/* Capa Cercana - Cyan/Bright para detalles sutiles */}
-                <Cloud opacity={0.15} speed={0.2} width={10} depth={1} segments={10} position={[-5, 2, -6]} color="#0e7490" />
+                {/* 2. Cuerpo Principal (Vibrant Purple/Pink) */}
+                <Cloud seed={2} scale={1} volume={3} color="#701a75" fade={10} opacity={0.3} position={[4, 0, -8]} speed={0.15} /> {/* Fuchsia oscuro */}
+                <Cloud seed={3} scale={1} volume={3} color="#4c1d95" fade={10} opacity={0.3} position={[-4, 0, -8]} speed={0.15} /> {/* Violeta oscuro */}
 
-                {/* Galaxia de partículas (sutil overlay) */}
+                {/* 3. Highlights / Detalles Brillantes (Bright Pink/Cyan accents) */}
+                <Cloud seed={4} scale={0.5} volume={2} color="#d946ef" fade={15} opacity={0.2} position={[2, 2, -6]} speed={0.2} /> {/* Fuchsia vibrante */}
+                <Cloud seed={5} scale={0.5} volume={2} color="#8b5cf6" fade={15} opacity={0.2} position={[-2, -2, -6]} speed={0.2} /> {/* Violeta vibrante */}
+
+                {/* Un toque sutil de azul para contraste */}
+                <Cloud seed={6} scale={0.8} volume={2} color="#0ea5e9" fade={20} opacity={0.15} position={[0, -3, -7]} speed={0.2} />
+
+                {/* Partículas flotantes para dar vida */}
                 <ParticleField />
             </Canvas>
         </div>

@@ -3,18 +3,28 @@
 @theme {
   --font-sans: 'Inter', system-ui, sans-serif;
 
-  /* Custom colors */
+  /* Custom colors - NEBULA THEME */
   --color-cosmic-night: #0B0F1A;
-  --color-nebula-violet: #3B1E4F;
-  --color-deep-ocean: #0E3A4A;
-  --color-cream-latte: #F4E6D8;
-  --color-sea-foam: #7FCAC3;
-  --color-star-pink: #E6A6C9;
-  --color-sunset-gold: #F2B705;
-  --color-coral-glow: #FF7A5C;
-  --color-coffee-brown: #4B2E2A;
+  /* Fondo base oscuro */
+  --color-nebula-violet: #701a75;
+  /* Morado profundo */
+  --color-deep-ocean: #1e1b4b;
+  /* Azul índigo oscuro */
+  --color-cream-latte: #F5F3FF;
+  /* Blanco suave (lavanda tint) */
+  --color-sea-foam: #d946ef;
+  /* REEMPLAZADO: Fuchsia vibrante (Accent principal) */
+  --color-star-pink: #f472b6;
+  /* Rosa suave */
+  --color-sunset-gold: #fbbf24;
+  /* Estrellas/Dorado */
+  --color-coral-glow: #a855f7;
+  /* Violeta brillante */
+  --color-coffee-brown: #312e81;
+  /* Indigo secundario */
+
   --color-text-primary: #F5F7FA;
-  --color-text-secondary: #C6C9D3;
+  --color-text-secondary: #e2e8f0;
   --color-text-dark: #1C1E26;
 
   /* Custom animations */
@@ -49,14 +59,15 @@
 @layer base {
   body {
     background-color: #020617;
+    /* Slate 950 base */
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: var(--color-text-primary);
   }
 
-  /* Background espacio-mar */
+  /* Background area is now handled by Background3D */
   #root {
-    /* Background handled by AnimatedBackground component */
     min-height: 100vh;
   }
 
@@ -80,7 +91,8 @@
 }
 
 ::selection {
-  background-color: rgb(6 182 212 / 0.3);
+  background-color: rgb(217 70 239 / 0.3);
+  /* Fuchsia selection */
   color: white;
 }
 
@@ -93,10 +105,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #334155;
+  background-color: #4c1d95;
+  /* Violet dark */
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(6 182 212 / 0.5);
+  background-color: #d946ef;
+  /* Fuchsia hover */
 }
