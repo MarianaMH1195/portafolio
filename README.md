@@ -2,12 +2,6 @@
 
 Portafolio web profesional construido con **React + TypeScript + Tailwind CSS**, con una estética "Cosmic Nebula" inmersiva y efectos 3D interactivos.
 
-## 🎥 Demo
-
-<div align="center">
-  <video src="https://raw.githubusercontent.com/MarianaMH1195/portafolio/develop/src/assets/img/Demo.mp4" controls width="100%"></video>
-</div>
-
 ![Estado del Proyecto](https://img.shields.io/badge/Estado-En%20Desarrollo-d946ef?style=for-the-badge)
 ![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript)
