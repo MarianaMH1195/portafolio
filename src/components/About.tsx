@@ -9,16 +9,10 @@ const About: React.FC = () => {
                 </h2>
                 <div className="text-text-secondary space-y-4 text-lg leading-relaxed">
                     <p>
-                        Soy una profesional polifacética con una trayectoria única que combina la ciencia veterinaria con el mundo tecnológico.
-                        Actualmente me desempeño como <strong className="text-fuchsia-300">Desarrolladora Web Full Stack</strong> y <strong className="text-fuchsia-300">Analista de Datos</strong> en formación.
+                        No llegué al mundo tech siguiendo una línea recta, y eso es parte de lo que me define. Hoy soy <strong className="text-fuchsia-300">desarrolladora web full stack</strong> y <strong className="text-fuchsia-300">analista de datos</strong> en formación constante, enfocada en crear experiencias digitales claras, funcionales y con sentido, donde las ideas y los datos se transforman en soluciones reales.
                     </p>
                     <p>
-                        Mi experiencia previa en medicina veterinaria me ha dotado de una fuerte capacidad analítica, atención al detalle y resolución de problemas complejos bajo presión,
-                        habilidades que ahora aplico en el desarrollo de software y el análisis de datos.
-                    </p>
-                    <p>
-                        Me apasiona crear soluciones tecnológicas que aporten valor real, utilizando herramientas modernas como <span className="text-fuchsia-400">React, Python y SQL</span>.
-                        Siempre estoy en búsqueda de nuevos desafíos que me permitan seguir aprendiendo y creciendo profesionalmente.
+                        He aprendido en contextos muy distintos —algunos técnicos, otros profundamente humanos— y cada uno me dejó habilidades que hoy aplico al desarrollo: adaptabilidad, comunicación y una forma analítica de enfrentar problemas. Combino esa mirada versátil con curiosidad, criterio y ganas de seguir creciendo dentro del mundo tecnológico.
                     </p>
                 </div>
             </div>
