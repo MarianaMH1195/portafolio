@@ -17,6 +17,7 @@ Portafolio web profesional construido con **React + TypeScript + Tailwind CSS**,
 - **Gradientes**: Transiciones de color Cyan → Blue → Purple
 - **Efectos Glow**: Brillos sutiles en estados hover
 - **Fondo Espacio-Océano**: Imagen cósmica-oceánica inmersiva
+- **Datos Dinámicos**: Integración con la API de GitHub para mostrar proyectos actualizados en tiempo real
 
 ### 🧩 Componentes
 

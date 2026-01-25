@@ -23,7 +23,7 @@ const ContactForm = () => {
 
         try {
             await emailjs.sendForm(
-                'service_i4rwroq',
+                'service_3z8aowl',
                 'template_y7uw3ac',
                 formRef.current!,
                 'UJ4d38O0qxq13im0J'
