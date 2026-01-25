@@ -117,7 +117,7 @@ const Projects = () => {
                 {/* Header de Sección */}
                 <div className="mb-12">
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                        Mis <span className="text-cyan-400">Proyectos</span>
+                        Mis <span className="text-fuchsia-400">Proyectos</span>
                     </h2>
                     <p className="text-slate-400 text-lg max-w-2xl">
                         Explora todos mis repositorios públicos de GitHub. ({projects.length} proyectos en total)
@@ -129,19 +129,19 @@ const Projects = () => {
                     {currentProjects.map((project) => (
                         <article
                             key={project.id}
-                            className="group relative bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-2 flex flex-col h-full"
+                            className="group relative bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-fuchsia-400/50 transition-all duration-300 hover:-translate-y-2 flex flex-col h-full"
                         >
                             {/* Badges */}
                             <div className="flex flex-wrap gap-2 mb-4">
                                 {project.language && (
-                                    <span className="px-3 py-1 text-xs font-medium bg-cyan-500/20 text-cyan-300 rounded-full border border-cyan-500/30">
+                                    <span className="px-3 py-1 text-xs font-medium bg-fuchsia-500/20 text-fuchsia-300 rounded-full border border-fuchsia-500/30">
                                         {project.language}
                                     </span>
                                 )}
                                 {project.topics?.map((tag, i) => (
                                     <span
                                         key={i}
-                                        className="px-3 py-1 text-xs font-medium bg-purple-500/20 text-purple-300 rounded-full border border-purple-500/30">
+                                        className="px-3 py-1 text-xs font-medium bg-indigo-500/20 text-indigo-300 rounded-full border border-indigo-500/30">
                                         {tag}
                                     </span>
                                 ))}

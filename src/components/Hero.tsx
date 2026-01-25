@@ -8,7 +8,7 @@ const Hero = () => {
             <div className="relative z-10 max-w-4xl">
                 {/* Nombre con gradiente */}
                 <h1 className="mb-4">
-                    <span className="block text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    <span className="block text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight bg-gradient-to-r from-fuchsia-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
                         Mariana
                     </span>
                     <span className="block text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mt-2">
@@ -17,7 +17,7 @@ const Hero = () => {
                 </h1>
 
                 {/* Tagline */}
-                <p className="text-lg md:text-xl text-cyan-300/90 font-medium tracking-wide mt-4 mb-6">
+                <p className="text-lg md:text-xl text-fuchsia-300/90 font-medium tracking-wide mt-4 mb-6">
                     Veterinaria · Developer · Data Analyst
                 </p>
 
