@@ -1,17 +1,17 @@
 import { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Points, PointMaterial, Stars, Cloud, Float } from '@react-three/drei';
+import { Points, PointMaterial, Stars, Cloud } from '@react-three/drei';
 import { Group } from 'three';
 
 // Galaxy/Particle Field
 const ParticleField = (props: React.ComponentProps<'group'>) => {
     const ref = useRef<Group>(null);
 
-    // Generamos 4000 partículas para el campo estelar principal
+    // Generamos 6000 partículas para el campo estelar principal
     const sphere = useMemo(() => {
-        const temp = new Float32Array(4000 * 3);
-        const count = 4000;
-        const radius = 2; // Radio un poco más grande
+        const temp = new Float32Array(6000 * 3);
+        const count = 6000;
+        const radius = 2.5;
         for (let i = 0; i < count; i++) {
             const u = Math.random();
             const v = Math.random();
@@ -30,8 +30,8 @@ const ParticleField = (props: React.ComponentProps<'group'>) => {
 
     useFrame((_state, delta) => {
         if (ref.current) {
-            ref.current.rotation.x -= delta / 15;
-            ref.current.rotation.y -= delta / 20;
+            ref.current.rotation.x -= delta / 20;
+            ref.current.rotation.y -= delta / 25;
         }
     });
 
@@ -40,32 +40,14 @@ const ParticleField = (props: React.ComponentProps<'group'>) => {
             <Points positions={sphere} stride={3} frustumCulled={false}>
                 <PointMaterial
                     transparent
-                    color="#22d3ee" // Cyan
-                    size={0.003}
+                    color="#67e8f9" // Cyan-300
+                    size={0.002}
                     sizeAttenuation={true}
                     depthWrite={false}
-                    opacity={0.8}
+                    opacity={0.6}
                 />
             </Points>
         </group>
-    );
-};
-
-// Simple Planet Component
-const Planet = ({ position, color, size, speed = 1 }: { position: [number, number, number], color: string, size: number, speed?: number }) => {
-    return (
-        <Float speed={speed} rotationIntensity={0.5} floatIntensity={0.5}>
-            <mesh position={position}>
-                <sphereGeometry args={[size, 32, 32]} />
-                <meshStandardMaterial
-                    color={color}
-                    roughness={0.7}
-                    metalness={0.2}
-                    emissive={color}
-                    emissiveIntensity={0.2}
-                />
-            </mesh>
-        </Float>
     );
 };
 
@@ -73,33 +55,28 @@ const Background3D = () => {
     return (
         <div className="fixed inset-0 -z-10 bg-slate-950">
             {/* Gradient overlay para simular profundidad cósmica */}
-            <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 opacity-80 z-0 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-[#0B0F1A] to-slate-950 z-0 pointer-events-none" />
 
             <Canvas camera={{ position: [0, 0, 1] }}>
-                {/* Iluminación básica para los planetas */}
-                <ambientLight intensity={0.5} />
-                <pointLight position={[10, 10, 10]} intensity={1} color="#c084fc" />
+                {/* Iluminación básica */}
+                <ambientLight intensity={0.4} />
+                <pointLight position={[10, 10, 10]} intensity={0.5} color="#c084fc" />
 
                 {/* Campo de estrellas fondo lejano */}
-                <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+                <Stars radius={150} depth={50} count={7000} factor={4} saturation={1} fade speed={0.5} />
 
-                {/* Nebulosa (Nubes) */}
-                <Cloud opacity={0.3} speed={0.2} width={10} depth={1.5} segments={20} position={[0, 0, -5]} color="#3b0764" /> {/* Dark Purple */}
-                <Cloud opacity={0.3} speed={0.2} width={10} depth={1.5} segments={20} position={[4, -2, -8]} color="#1e3a8a" /> {/* Dark Blue */}
+                {/* Nebulosas Volumétricas (Clouds) */}
+                {/* Capa Profunda - Morado oscuro */}
+                <Cloud opacity={0.2} speed={0.1} width={20} depth={2} segments={20} position={[0, 0, -10]} color="#3b0764" />
 
-                {/* Galaxia de partículas (Cyan) */}
+                {/* Capa Media - Azul/Cyan */}
+                <Cloud opacity={0.2} speed={0.15} width={15} depth={1.5} segments={15} position={[5, -2, -8]} color="#1e3a8a" />
+
+                {/* Capa Cercana - Cyan/Bright para detalles sutiles */}
+                <Cloud opacity={0.15} speed={0.2} width={10} depth={1} segments={10} position={[-5, 2, -6]} color="#0e7490" />
+
+                {/* Galaxia de partículas (sutil overlay) */}
                 <ParticleField />
-
-                {/* Planetas */}
-                {/* Planeta 1: Purple/Pink - Lejano */}
-                <Planet position={[-3, 2, -4]} color="#e879f9" size={0.3} speed={1.5} />
-
-                {/* Planeta 2: Cyan/Blue - Medio */}
-                <Planet position={[3.5, -1.5, -3]} color="#22d3ee" size={0.2} speed={2} />
-
-                {/* Planeta 3: Deep Blue - Cerca (pero pequeño) */}
-                <Planet position={[1, 3, -6]} color="#60a5fa" size={0.15} speed={1} />
-
             </Canvas>
         </div>
     );
