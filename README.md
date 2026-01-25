@@ -6,6 +6,8 @@ Portafolio web profesional construido con **React + TypeScript + Tailwind CSS**,
 
 <div align="center">
   <video src="src/assets/img/Demo.mp4" controls width="100%"></video>
+  <br/>
+  <a href="src/assets/img/Demo.mp4">Ver Demo en pantalla completa</a>
 </div>
 
 ![Estado del Proyecto](https://img.shields.io/badge/Estado-En%20Desarrollo-d946ef?style=for-the-badge)
