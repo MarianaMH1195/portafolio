@@ -2,7 +2,7 @@ import ContactForm from './ContactForm';
 
 const Contact = () => {
     return (
-        <footer id="contacto" className="container mx-auto px-6 md:px-12 py-32 relative">
+        <section id="contacto" className="container mx-auto px-6 md:px-12 py-32 relative">
             <div className="border-t border-sea-foam/10 absolute top-0 left-6 right-6 md:left-12 md:right-12"></div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -55,11 +55,8 @@ const Contact = () => {
                 </div>
             </div>
 
-            <div className="mt-32 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-text-secondary text-sm">
-                <p>© {new Date().getFullYear()} Mariana Moreno Henao.</p>
-                <p>Diseñado con Dualidad & Código.</p>
-            </div>
-        </footer>
+            {/* Footer removido de aquí y movido a componente Footer.tsx */}
+        </section>
     );
 };
 
