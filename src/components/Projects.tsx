@@ -1,74 +1,92 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 
-interface Project {
-    id: number;
-    title: string;
-    description: string;
-    tags: string[];
-    link: string;
+interface ProjectConfig {
+    repoName: string;
     category: 'data' | 'web';
     size: 'large' | 'small';
 }
 
-const projects: Project[] = [
-    // First project is Large (Asymmetric grid feature)
-    {
-        id: 1,
-        title: "Analisis de Series Temporales",
-        description: "Píldora formativa sobre Análisis de Series Temporales. Tendencia, estacionalidad y patrones temporales. Un estudio profundo utilizando modelos estadísticos avanzados.",
-        tags: ["Python", "Time Series", "Data Analysis"],
-        link: "https://github.com/MarianaMH1195/Analisis-de-series-temporales",
-        category: 'data',
-        size: 'large'
-    },
-    {
-        id: 2,
-        title: "Análisis Exploratorio (EDA)",
-        description: "Análisis completo de dataset para relacionar variables y extraer conclusiones.",
-        tags: ["Python", "Pandas", "EDA"],
-        link: "https://github.com/MarianaMH1195/p5-analisis_exploratorio_datos-g5",
-        category: 'data',
-        size: 'small'
-    },
-    {
-        id: 3,
-        title: "Data Automation",
-        description: "Automatización de procesos con Python, SQL y Excel.",
-        tags: ["Python", "SQL", "Automation"],
-        link: "https://github.com/MarianaMH1195/project-data-automation",
-        category: 'data',
-        size: 'small'
-    },
-    {
-        id: 4,
-        title: "Fullstack Butterflies",
-        description: "Aplicación Full Stack con persistencia de datos y gestión de usuarios.",
-        tags: ["React", "Node.js", "MongoDB"],
-        link: "https://github.com/MarianaMH1195/fullstack-butterflies-mongodb",
-        category: 'web',
-        size: 'large'
-    },
-    {
-        id: 5,
-        title: "Tarot App",
-        description: "Aplicación web interactiva.",
-        tags: ["React", "CSS"],
-        link: "https://github.com/MarianaMH1195/Tarot-app",
-        category: 'web',
-        size: 'small'
-    },
-    {
-        id: 6,
-        title: "Cine Verano CRUD",
-        description: "Gestión para cine de verano.",
-        tags: ["CRUD", "JS"],
-        link: "https://github.com/MarianaMH1195/cine-verano-crud",
-        category: 'web',
-        size: 'small'
-    }
+interface ProjectData {
+    id: number;
+    name: string;
+    description: string;
+    html_url: string;
+    topics: string[];
+    language: string;
+    homepage: string;
+}
+
+interface EnrichedProject extends ProjectData {
+    category: 'data' | 'web';
+    size: 'large' | 'small';
+}
+
+const REPO_CONFIG: ProjectConfig[] = [
+    { repoName: "Analisis-de-series-temporales", category: 'data', size: 'large' },
+    { repoName: "p5-analisis_exploratorio_datos-g5", category: 'data', size: 'small' },
+    { repoName: "project-data-automation", category: 'data', size: 'small' },
+    { repoName: "fullstack-butterflies-mongodb", category: 'web', size: 'large' },
+    { repoName: "Tarot-app", category: 'web', size: 'small' },
+    { repoName: "cine-verano-crud", category: 'web', size: 'small' }
 ];
 
-const Projects: React.FC = () => {
+const USERNAME = "MarianaMH1195";
+
+const Projects = () => {
+    const [projects, setProjects] = useState<EnrichedProject[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchProjects = async () => {
+            try {
+                const projectPromises = REPO_CONFIG.map(async (config) => {
+                    const response = await fetch(`https://api.github.com/repos/${USERNAME}/${config.repoName}`);
+                    if (!response.ok) {
+                        console.warn(`Failed to fetch ${config.repoName}`);
+                        return null;
+                    }
+                    const data: ProjectData = await response.json();
+
+                    return {
+                        ...data,
+                        category: config.category,
+                        size: config.size
+                    };
+                });
+
+                const results = await Promise.all(projectPromises);
+                const validProjects = results.filter((p): p is EnrichedProject => p !== null);
+                setProjects(validProjects);
+            } catch (err) {
+                console.error("Error fetching projects:", err);
+                setError("Error al cargar los proyectos desde GitHub");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProjects();
+    }, []);
+
+    if (loading) {
+        return (
+            <section id="projectos" className="relative px-6 lg:px-20 py-20 bg-gradient-to-b from-slate-950/90 to-slate-900 min-h-screen">
+                <div className="flex items-center justify-center h-full">
+                    <div className="text-cyan-400 text-xl animate-pulse">Cargando proyectos desde GitHub...</div>
+                </div>
+            </section>
+        );
+    }
+
+    if (error) {
+        return (
+            <section id="projectos" className="relative px-6 lg:px-20 py-20 bg-gradient-to-b from-slate-950/90 to-slate-900">
+                <div className="text-red-400 text-center">{error}</div>
+            </section>
+        )
+    }
+
     return (
         <section id="projectos" className="relative px-6 lg:px-20 py-20 bg-gradient-to-b from-slate-950/90 to-slate-900">
             <div className="max-w-7xl mx-auto">
@@ -78,7 +96,7 @@ const Projects: React.FC = () => {
                         Proyectos <span className="text-cyan-400">Destacados</span>
                     </h2>
                     <p className="text-slate-400 text-lg max-w-2xl">
-                        Una selección de mis trabajos más recientes en desarrollo web y análisis de datos.
+                        Una selección de mis trabajos más recientes en desarrollo web y análisis de datos, obtenidos directamente de mi GitHub.
                     </p>
                 </div>
 
@@ -87,45 +105,50 @@ const Projects: React.FC = () => {
                     {projects.map((project) => (
                         <article
                             key={project.id}
-                            className="group relative bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-2"
+                            className="group relative bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-2 flex flex-col h-full"
                         >
                             {/* Badges */}
                             <div className="flex flex-wrap gap-2 mb-4">
-                                {project.tags.map((tag, i) => {
-                                    // Lógica simple para estilos de badged (alternar o por nombre)
-                                    const isPrimary = ['Python', 'React', 'SQL', 'Node.js'].some(t => tag.includes(t));
-                                    return (
-                                        <span
-                                            key={i}
-                                            className={isPrimary
-                                                ? "px-3 py-1 text-xs font-medium bg-cyan-500/20 text-cyan-300 rounded-full border border-cyan-500/30"
-                                                : "px-3 py-1 text-xs font-medium bg-purple-500/20 text-purple-300 rounded-full border border-purple-500/30"
-                                            }
-                                        >
-                                            {tag}
-                                        </span>
-                                    );
-                                })}
+                                {project.language && (
+                                    <span className="px-3 py-1 text-xs font-medium bg-cyan-500/20 text-cyan-300 rounded-full border border-cyan-500/30">
+                                        {project.language}
+                                    </span>
+                                )}
+                                {project.topics?.map((tag, i) => (
+                                    <span
+                                        key={i}
+                                        className="px-3 py-1 text-xs font-medium bg-purple-500/20 text-purple-300 rounded-full border border-purple-500/30">
+                                        {tag}
+                                    </span>
+                                ))}
                             </div>
 
                             {/* Título */}
-                            <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
-                                {project.title}
+                            <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors break-words">
+                                {project.name.replace(/-/g, ' ')}
                             </h3>
 
                             {/* Descripción */}
-                            <p className="text-slate-300 text-sm leading-relaxed mb-4">
-                                {project.description}
+                            <p className="text-slate-300 text-sm leading-relaxed mb-4 flex-grow">
+                                {project.description || "Sin descripción disponible en GitHub."}
                             </p>
 
                             {/* Footer Card */}
-                            <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                                <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 w-full group/link">
-                                    <span className="text-xs text-slate-400 uppercase tracking-wide group-hover/link:text-white transition-colors">Ver Proyecto</span>
+                            <div className="flex items-center justify-between pt-4 border-t border-white/10 mt-auto">
+                                <a href={project.html_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 w-full group/link">
+                                    <span className="text-xs text-slate-400 uppercase tracking-wide group-hover/link:text-white transition-colors">Ver Código</span>
                                     <svg className="w-5 h-5 text-cyan-400 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                     </svg>
                                 </a>
+                                {project.homepage && (
+                                    <a href={project.homepage} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 group/link ml-4">
+                                        <span className="text-xs text-slate-400 uppercase tracking-wide group-hover/link:text-white transition-colors">Demo</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-purple-400 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                        </svg>
+                                    </a>
+                                )}
                             </div>
                         </article>
                     ))}
