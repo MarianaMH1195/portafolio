@@ -8,7 +8,7 @@ const ParticleField = (props: any) => {
     // Generamos 3000 partículas en una esfera de radio 1.5
     const sphere = useMemo(() => random.inSphere(new Float32Array(5000), { radius: 1.5 }), []);
 
-    useFrame((state, delta) => {
+    useFrame((_state, delta) => {
         if (ref.current) {
             ref.current.rotation.x -= delta / 10;
             ref.current.rotation.y -= delta / 15;
