@@ -21,43 +21,54 @@ interface EnrichedProject extends ProjectData {
     size: 'large' | 'small';
 }
 
-const REPO_CONFIG: ProjectConfig[] = [
-    { repoName: "Analisis-de-series-temporales", category: 'data', size: 'large' },
-    { repoName: "p5-analisis_exploratorio_datos-g5", category: 'data', size: 'small' },
-    { repoName: "project-data-automation", category: 'data', size: 'small' },
-    { repoName: "fullstack-butterflies-mongodb", category: 'web', size: 'large' },
-    { repoName: "Tarot-app", category: 'web', size: 'small' },
-    { repoName: "cine-verano-crud", category: 'web', size: 'small' }
-];
+// Configuración opcional para proyectos específicos que quieras destacar con tamaños especiales
+const REPO_CONFIG: Record<string, Partial<ProjectConfig>> = {
+    "Analisis-de-series-temporales": { category: 'data', size: 'large' },
+    "fullstack-butterflies-mongodb": { category: 'web', size: 'large' },
+    // El resto usará valores por defecto
+};
 
 const USERNAME = "MarianaMH1195";
+const ITEMS_PER_PAGE = 6;
 
 const Projects = () => {
     const [projects, setProjects] = useState<EnrichedProject[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const projectPromises = REPO_CONFIG.map(async (config) => {
-                    const response = await fetch(`https://api.github.com/repos/${USERNAME}/${config.repoName}`);
-                    if (!response.ok) {
-                        console.warn(`Failed to fetch ${config.repoName}`);
-                        return null;
-                    }
-                    const data: ProjectData = await response.json();
+                // Fetch de TODOS los repositorios
+                const response = await fetch(`https://api.github.com/users/${USERNAME}/repos?sort=updated&per_page=100`);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch repositories');
+                }
+                const data: ProjectData[] = await response.json();
 
-                    return {
-                        ...data,
-                        category: config.category,
-                        size: config.size
-                    };
-                });
+                // Mapear y enriquecer datos
+                const enrichedProjects: EnrichedProject[] = data
+                    .filter(repo => repo.name !== 'portafolio') // Opcional: excluir el propio portafolio si quieres
+                    .map(repo => {
+                        const config = REPO_CONFIG[repo.name];
 
-                const results = await Promise.all(projectPromises);
-                const validProjects = results.filter((p): p is EnrichedProject => p !== null);
-                setProjects(validProjects);
+                        // Inferir categoría basada en lenguaje si no hay config
+                        let category: 'data' | 'web' = 'web';
+                        if (config?.category) {
+                            category = config.category;
+                        } else if (repo.language === 'Python' || repo.language === 'Jupyter Notebook') {
+                            category = 'data';
+                        }
+
+                        return {
+                            ...repo,
+                            category: category,
+                            size: config?.size || 'small'
+                        };
+                    });
+
+                setProjects(enrichedProjects);
             } catch (err) {
                 console.error("Error fetching projects:", err);
                 setError("Error al cargar los proyectos desde GitHub");
@@ -69,11 +80,24 @@ const Projects = () => {
         fetchProjects();
     }, []);
 
+    // Lógica de Paginación
+    const totalPages = Math.ceil(projects.length / ITEMS_PER_PAGE);
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const currentProjects = projects.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+    const handlePageChange = (newPage: number) => {
+        if (newPage >= 1 && newPage <= totalPages) {
+            setCurrentPage(newPage);
+            // Scroll suave hacia arriba de la sección
+            document.getElementById('projectos')?.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     if (loading) {
         return (
             <section id="projectos" className="relative px-6 lg:px-20 py-20 bg-gradient-to-b from-slate-950/90 to-slate-900 min-h-screen">
                 <div className="flex items-center justify-center h-full">
-                    <div className="text-cyan-400 text-xl animate-pulse">Cargando proyectos desde GitHub...</div>
+                    <div className="text-cyan-400 text-xl animate-pulse">Cargando todos los proyectos...</div>
                 </div>
             </section>
         );
@@ -93,16 +117,16 @@ const Projects = () => {
                 {/* Header de Sección */}
                 <div className="mb-12">
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                        Proyectos <span className="text-cyan-400">Destacados</span>
+                        Mis <span className="text-cyan-400">Proyectos</span>
                     </h2>
                     <p className="text-slate-400 text-lg max-w-2xl">
-                        Una selección de mis trabajos más recientes en desarrollo web y análisis de datos, obtenidos directamente de mi GitHub.
+                        Explora todos mis repositorios públicos de GitHub. ({projects.length} proyectos en total)
                     </p>
                 </div>
 
                 {/* Grid de Proyectos */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {projects.map((project) => (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                    {currentProjects.map((project) => (
                         <article
                             key={project.id}
                             className="group relative bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-2 flex flex-col h-full"
@@ -130,7 +154,7 @@ const Projects = () => {
 
                             {/* Descripción */}
                             <p className="text-slate-300 text-sm leading-relaxed mb-4 flex-grow">
-                                {project.description || "Sin descripción disponible en GitHub."}
+                                {project.description || "Sin descripción disponible."}
                             </p>
 
                             {/* Footer Card */}
@@ -153,6 +177,31 @@ const Projects = () => {
                         </article>
                     ))}
                 </div>
+
+                {/* Controles de Paginación */}
+                {totalPages > 1 && (
+                    <div className="flex justify-center items-center gap-4">
+                        <button
+                            onClick={() => handlePageChange(currentPage - 1)}
+                            disabled={currentPage === 1}
+                            className="px-6 py-2 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                        >
+                            Anterior
+                        </button>
+
+                        <span className="text-slate-400">
+                            Página <span className="text-cyan-400">{currentPage}</span> de <span className="text-white">{totalPages}</span>
+                        </span>
+
+                        <button
+                            onClick={() => handlePageChange(currentPage + 1)}
+                            disabled={currentPage === totalPages}
+                            className="px-6 py-2 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                        >
+                            Siguiente
+                        </button>
+                    </div>
+                )}
             </div>
         </section>
     );
