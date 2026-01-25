@@ -1,5 +1,5 @@
 import Navbar from './components/Navbar';
-import AnimatedBackground from './components/AnimatedBackground';
+import Background3D from './components/Background3D';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
@@ -9,7 +9,7 @@ import Contact from './components/Contact';
 function App() {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
-      <AnimatedBackground />
+      <Background3D />
       {/* Navbar flotante */}
       <Navbar />
 
