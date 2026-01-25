@@ -9,10 +9,10 @@ const About: React.FC = () => {
                 </h2>
                 <div className="text-text-secondary space-y-4 text-lg leading-relaxed">
                     <p>
-                        Soy <strong className="text-fuchsia-300">desarrolladora web full stack</strong> y <strong className="text-fuchsia-300">analista de datos</strong> en formación constante. Me motiva crear experiencias digitales claras y funcionales, combinando <span className="text-indigo-300">desarrollo web</span> con <span className="text-indigo-300">análisis y visualización de datos</span> para transformar ideas e información en soluciones prácticas.
+                        No llegué al mundo tech siguiendo una línea recta, y eso es parte de lo que me define. Hoy soy <strong className="text-fuchsia-300">desarrolladora web full stack</strong> y <strong className="text-fuchsia-300">analista de datos</strong> en formación constante, enfocada en crear experiencias digitales claras, funcionales y con sentido, donde las ideas y los datos se transforman en soluciones reales.
                     </p>
                     <p>
-                        Mi experiencia en ventas y retail fortaleció mis habilidades de comunicación y resolución de problemas. Hoy uno ese enfoque humano con la <strong className="text-fuchsia-400">tecnología</strong> para aportar valor real, seguir aprendiendo y crecer dentro del mundo tech.
+                        He aprendido en contextos muy distintos —algunos técnicos, otros profundamente humanos— y cada uno me dejó habilidades que hoy aplico al desarrollo: adaptabilidad, comunicación y una forma analítica de enfrentar problemas. Combino esa mirada versátil con curiosidad, criterio y ganas de seguir creciendo dentro del mundo tecnológico.
                     </p>
                 </div>
             </div>
