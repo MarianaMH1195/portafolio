@@ -25,6 +25,8 @@ const Navbar = () => {
     // Links de navegación
     const navLinks = [
         { label: 'Proyectos', id: 'projectos' },
+        { label: 'Sobre mí', id: 'sobre-mi' },
+        { label: 'Stack', id: 'stack' },
         { label: 'Contacto', id: 'contacto' },
     ];
 
