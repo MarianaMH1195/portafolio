@@ -5,7 +5,7 @@ Portafolio web profesional construido con **React + TypeScript + Tailwind CSS**,
 ## 🎥 Demo
 
 <div align="center">
-  <video src="src/assets/img/Demo.mp4" controls width="100%"></video>
+  <video src="https://raw.githubusercontent.com/MarianaMH1195/portafolio/develop/src/assets/img/Demo.mp4" controls width="100%"></video>
 </div>
 
 ![Estado del Proyecto](https://img.shields.io/badge/Estado-En%20Desarrollo-d946ef?style=for-the-badge)
