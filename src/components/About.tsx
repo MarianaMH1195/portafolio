@@ -9,16 +9,10 @@ const About: React.FC = () => {
                 </h2>
                 <div className="text-text-secondary space-y-4 text-lg leading-relaxed">
                     <p>
-                        Soy una profesional polifacética con una trayectoria única que combina la ciencia veterinaria con el mundo tecnológico.
-                        Actualmente me desempeño como <strong className="text-fuchsia-300">Desarrolladora Web Full Stack</strong> y <strong className="text-fuchsia-300">Analista de Datos</strong> en formación.
+                        Profesional del sector tecnológico con formación en <strong className="text-fuchsia-300">Desarrolladora Web Full Stack</strong> y <strong className="text-fuchsia-300">Análisis de Datos</strong>, orientada al diseño y desarrollo de soluciones tecnológicas eficientes, escalables y centradas en el usuario. Cuento con experiencia práctica en programación, análisis y visualización de datos, así como en el uso de herramientas colaborativas y control de versiones para el desarrollo y documentación de proyectos.
                     </p>
                     <p>
-                        Mi experiencia previa en medicina veterinaria me ha dotado de una fuerte capacidad analítica, atención al detalle y resolución de problemas complejos bajo presión,
-                        habilidades que ahora aplico en el desarrollo de software y el análisis de datos.
-                    </p>
-                    <p>
-                        Me apasiona crear soluciones tecnológicas que aporten valor real, utilizando herramientas modernas como <span className="text-fuchsia-400">React, Python y SQL</span>.
-                        Siempre estoy en búsqueda de nuevos desafíos que me permitan seguir aprendiendo y creciendo profesionalmente.
+                        Mi trayectoria previa en ventas, asesoría financiera y retail me ha permitido desarrollar una sólida capacidad de comunicación, pensamiento analítico, resolución de problemas y orientación a resultados, habilidades que hoy aplico al ámbito tecnológico para conectar las necesidades del negocio con soluciones técnicas efectivas.
                     </p>
                 </div>
             </div>
