@@ -92,6 +92,43 @@ npm run build
 
 ---
 
+## 📁 Estructura del Proyecto
+
+```
+portafolio/
+├── public/                    # Recursos estáticos
+├── src/
+│   ├── assets/                # Imágenes y media
+│   ├── components/
+│   │   ├── About.tsx          # Sección Sobre mí
+│   │   ├── Background3D.tsx   # Escena 3D (Nebulosa/Estrellas)
+│   │   ├── ButtonPrimary.tsx  # Botones reutilizables
+│   │   ├── Contact.tsx        # Sección de contacto
+│   │   ├── Hero.tsx           # Sección principal
+│   │   ├── MobileMenu.tsx     # Navegación móvil
+│   │   ├── Navbar.tsx         # Barra de navegación
+│   │   ├── Projects.tsx       # Grid de proyectos
+│   │   └── Skills.tsx         # Visualización de skills
+│   ├── App.tsx                # Componente raíz
+│   ├── index.css              # Estilos globales y Tailwind
+│   └── main.tsx               # Punto de entrada
+├── index.html
+├── package.json
+└── vite.config.ts
+```
+
+---
+
+## 🔮 Mejoras Futuras
+
+- [ ] **Animaciones Scroll Reveal**: Efectos de aparición suave al hacer scroll.
+- [ ] **Modo Interactivo**: Permitir al usuario controlar la rotación de la nebulosa con el mouse.
+- [ ] **Blog Integrado**: Sección para compartir artículos técnicos.
+- [ ] **Filtros Avanzados**: Filtrar proyectos por tecnología en tiempo real.
+- [ ] **Internacionalización (i18n)**: Soporte para inglés/español.
+
+---
+
 ## 👩‍💻 Autora
 
 **Mariana Moreno Henao**
