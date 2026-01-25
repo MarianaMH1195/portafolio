@@ -23,7 +23,7 @@ const ContactForm = () => {
 
         try {
             await emailjs.sendForm(
-                'service_i4rwroq',
+                'service_3z8aowl',
                 'template_y7uw3ac',
                 formRef.current!,
                 'UJ4d38O0qxq13im0J'
@@ -33,19 +33,8 @@ const ContactForm = () => {
             setFormData({ name: '', email: '', message: '' });
 
             setTimeout(() => setStatus('idle'), 5000);
-        } catch (error: any) {
-            console.error('=== ERROR DETALLADO DE EMAILJS ===');
-            console.error('Error completo:', error);
-            console.error('Mensaje del error:', error?.text || error?.message);
-            console.error('Status:', error?.status);
-            console.error('Datos del formulario enviados:', {
-                name: formData.name,
-                email: formData.email,
-                message: formData.message
-            });
-            console.error('Service ID: service_i4rwroq');
-            console.error('Template ID: template_y7uw3ac');
-            console.error('================================');
+        } catch (error) {
+            console.error('Error sending email:', error);
             setStatus('error');
             setTimeout(() => setStatus('idle'), 5000);
         }
