@@ -18,12 +18,12 @@ const Hero = () => {
 
                 {/* Tagline */}
                 <p className="text-lg md:text-xl text-fuchsia-300/90 font-medium tracking-wide mt-4 mb-6">
-                    Veterinaria · Developer · Data Analyst
+                    Developer · Data Analyst
                 </p>
 
                 {/* Descripción */}
                 <p className="text-base md:text-lg text-slate-200/80 leading-relaxed max-w-2xl">
-                    Explorando la dualidad entre la ciencia biológica y la lógica computacional.
+                    Explorando el infinito potencial de la lógica computacional.
                     Creo soluciones donde los datos cuentan historias y el código cobra vida.
                 </p>
             </div>
