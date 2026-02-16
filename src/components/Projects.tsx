@@ -35,15 +35,13 @@ const REFRESH_INTERVAL = 5 * 60 * 1000; // 5 minutos en milisegundos
 const Projects = () => {
     const [projects, setProjects] = useState<EnrichedProject[]>([]);
     const [loading, setLoading] = useState(true);
-    const [isRefreshing, setIsRefreshing] = useState(false);
+
     const [error, setError] = useState<string | null>(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
 
-    const fetchProjects = useCallback(async (isManualRefresh = false) => {
-        if (isManualRefresh) {
-            setIsRefreshing(true);
-        }
+
+    const fetchProjects = useCallback(async () => {
+
 
         try {
             // Fetch de TODOS los repositorios
@@ -75,16 +73,13 @@ const Projects = () => {
                 });
 
             setProjects(enrichedProjects);
-            setLastUpdated(new Date());
+
             setError(null);
         } catch (err) {
             console.error("Error fetching projects:", err);
             setError("Error al cargar los proyectos desde GitHub");
         } finally {
             setLoading(false);
-            if (isManualRefresh) {
-                setIsRefreshing(false);
-            }
         }
     }, []);
 
@@ -101,20 +96,7 @@ const Projects = () => {
         return () => clearInterval(intervalId);
     }, [fetchProjects]);
 
-    // Función para formatear el tiempo de última actualización
-    const getTimeAgo = (date: Date | null) => {
-        if (!date) return '';
 
-        const seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
-
-        if (seconds < 60) return 'hace unos segundos';
-        const minutes = Math.floor(seconds / 60);
-        if (minutes < 60) return `hace ${minutes} minuto${minutes > 1 ? 's' : ''}`;
-        const hours = Math.floor(minutes / 60);
-        if (hours < 24) return `hace ${hours} hora${hours > 1 ? 's' : ''}`;
-        const days = Math.floor(hours / 24);
-        return `hace ${days} día${days > 1 ? 's' : ''}`;
-    };
 
     // Lógica de Paginación
     const totalPages = Math.ceil(projects.length / ITEMS_PER_PAGE);
@@ -129,9 +111,7 @@ const Projects = () => {
         }
     };
 
-    const handleManualRefresh = () => {
-        fetchProjects(true);
-    };
+
 
     if (loading) {
         return (
@@ -161,30 +141,6 @@ const Projects = () => {
                             Mis <span className="text-fuchsia-400">Proyectos</span>
                         </h2>
 
-                        {/* Botón de Refresh y Timestamp */}
-                        <div className="flex items-center gap-4">
-                            {lastUpdated && (
-                                <span className="text-sm text-slate-500">
-                                    Actualizado {getTimeAgo(lastUpdated)}
-                                </span>
-                            )}
-                            <button
-                                onClick={handleManualRefresh}
-                                disabled={isRefreshing}
-                                className="group flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-fuchsia-400/50 rounded-xl text-slate-300 hover:text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                                title="Actualizar proyectos"
-                            >
-                                <svg
-                                    className={`w-5 h-5 ${isRefreshing ? 'animate-spin' : 'group-hover:rotate-180 transition-transform duration-500'}`}
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                                </svg>
-                                <span className="hidden sm:inline">{isRefreshing ? 'Actualizando...' : 'Actualizar'}</span>
-                            </button>
-                        </div>
                     </div>
                     <p className="text-slate-400 text-lg max-w-2xl">
                         Explora todos mis repositorios públicos de GitHub. ({projects.length} proyectos en total)
