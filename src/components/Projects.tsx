@@ -136,6 +136,7 @@ const Projects = () => {
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
                         <h2 className="text-4xl md:text-5xl font-bold text-white">
                             Mis <span className="text-fuchsia-400">Proyectos</span>
+                        </h2>
                     </div>
                     <p className="text-slate-400 text-lg max-w-2xl">
                         Explora todos mis repositorios públicos de GitHub. ({projects.length} proyectos en total)
