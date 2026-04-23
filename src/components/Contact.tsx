@@ -44,7 +44,7 @@ const Contact = () => {
 
 
 
-                    <a href="./cv.pdf" download="CV_Mariana_Moreno.pdf"
+                    <a href="./Mariana%20Moreno-%20CV%20Tech.pdf" download="CV_Mariana_Moreno.pdf"
                         className="group flex items-center justify-between p-8 bg-cosmic-night border border-sea-foam/20 text-purple-200/90 hover:bg-text-secondary hover:text-cosmic-night transition-all duration-300">
                         <div>
                             <span className="block text-sm font-bold opacity-60 uppercase tracking-widest mb-1">Resumen</span>
