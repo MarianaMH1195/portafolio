@@ -75,10 +75,22 @@ const About: React.FC = () => {
 
                         <div className="text-text-secondary space-y-4 text-lg leading-relaxed">
                             <p>
-                                No llegué al mundo tech siguiendo una línea recta, y eso es parte de lo que me define. Hoy soy <strong className="text-fuchsia-300">desarrolladora web full stack</strong> y <strong className="text-fuchsia-300">analista de datos</strong> en formación constante, enfocada en crear experiencias digitales claras, funcionales y con sentido.
+                                No llegué al mundo tech por un camino directo, y eso ha marcado la forma en la que lo entiendo hoy. Empecé en el desarrollo web, aprendiendo a construir productos digitales desde cero, a darles forma y funcionalidad. Con el tiempo, descubrí que lo que más me interesaba no era solo lo visible, sino lo que ocurre detrás: <strong className="text-fuchsia-300">los datos</strong>.
                             </p>
                             <p>
-                                He aprendido en contextos muy distintos —algunos técnicos, otros profundamente humanos— y cada uno me dejó habilidades que hoy aplico al desarrollo: adaptabilidad, comunicación y una forma analítica de enfrentar problemas. Combino esa mirada versátil con curiosidad, criterio y ganas de seguir creciendo dentro del mundo tecnológico.
+                                Hoy estoy enfocada en el rol de <strong className="text-fuchsia-300">Data Analyst</strong>, donde busco entender qué cuentan los datos cuando se analizan en profundidad: patrones, comportamientos y decisiones que pueden mejorar productos y experiencias.
+                            </p>
+                            <p>
+                                Mi base en <strong className="text-fuchsia-300">desarrollo Full Stack</strong> me ayuda a comprender mejor cómo se generan y estructuran los datos dentro de los sistemas, aportando una visión más completa del ciclo de un producto digital.
+                            </p>
+                            <p>
+                                He tenido contacto con el sector financiero, lo que me dio una visión más orientada al negocio y a las métricas que realmente importan en la toma de decisiones.
+                            </p>
+                            <p>
+                                Además, estoy explorando el campo de la <strong className="text-fuchsia-300">ciberseguridad</strong>, con interés en entender cómo se protegen los datos y cómo se garantiza su integridad en entornos digitales.
+                            </p>
+                            <p>
+                                Sigo en constante aprendizaje, con el objetivo de seguir creciendo en el mundo del dato y construir soluciones que aporten valor real.
                             </p>
                         </div>
 
