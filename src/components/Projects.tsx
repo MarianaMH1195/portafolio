@@ -38,10 +38,8 @@ const Projects = () => {
 
     const [error, setError] = useState<string | null>(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
 
     const fetchProjects = useCallback(async () => {
-
         try {
             // Fetch de TODOS los repositorios
             const response = await fetch(`https://api.github.com/users/${USERNAME}/repos?sort=updated&per_page=100&_=${Date.now()}`);
@@ -72,7 +70,7 @@ const Projects = () => {
                 });
 
             setProjects(enrichedProjects);
-            setLastUpdated(new Date());
+
             setError(null);
         } catch (err) {
             console.error("Error fetching projects:", err);
@@ -95,20 +93,7 @@ const Projects = () => {
         return () => clearInterval(intervalId);
     }, [fetchProjects]);
 
-    // Función para formatear el tiempo de última actualización
-    const getTimeAgo = (date: Date | null) => {
-        if (!date) return '';
 
-        const seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
-
-        if (seconds < 60) return 'hace unos segundos';
-        const minutes = Math.floor(seconds / 60);
-        if (minutes < 60) return `hace ${minutes} minuto${minutes > 1 ? 's' : ''}`;
-        const hours = Math.floor(minutes / 60);
-        if (hours < 24) return `hace ${hours} hora${hours > 1 ? 's' : ''}`;
-        const days = Math.floor(hours / 24);
-        return `hace ${days} día${days > 1 ? 's' : ''}`;
-    };
 
     // Lógica de Paginación
     const totalPages = Math.ceil(projects.length / ITEMS_PER_PAGE);
@@ -151,17 +136,6 @@ const Projects = () => {
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
                         <h2 className="text-4xl md:text-5xl font-bold text-white">
                             Mis <span className="text-fuchsia-400">Proyectos</span>
-                        </h2>
-
-                        {/* Botón de Refresh y Timestamp */}
-                        <div className="flex items-center gap-4">
-                            {lastUpdated && (
-                                <span className="text-sm text-slate-500">
-                                    Actualizado {getTimeAgo(lastUpdated)}
-                                </span>
-                            )}
-
-                        </div>
                     </div>
                     <p className="text-slate-400 text-lg max-w-2xl">
                         Explora todos mis repositorios públicos de GitHub. ({projects.length} proyectos en total)
