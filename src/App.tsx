@@ -20,12 +20,15 @@ function App() {
       </div>
 
       <main className="space-y-0">
+        {/* About section before Projects for better flow */}
+        <section className="container mx-auto px-6 md:px-12 space-y-24 py-24">
+          <About />
+        </section>
+
         <Projects />
 
-        {/* About & Skills grouped for better flow after Projects */}
         <section className="container mx-auto px-6 md:px-12 space-y-24 py-24">
           <Skills />
-          <About />
         </section>
       </main>
 
